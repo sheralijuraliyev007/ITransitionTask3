@@ -2,4 +2,4 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "cd ITransitionTask3 && dotnet run --urls=http://0.0.0.0:$PORT"
+startCommand = "dotnet run --urls=http://0.0.0.0:$PORT"
