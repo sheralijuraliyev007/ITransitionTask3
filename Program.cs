@@ -1,3 +1,5 @@
+using System.Numerics;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
@@ -11,24 +13,17 @@ app.MapGet("/sheralijuraliyev3_gmail_com", (string? x, string? y) =>
 {
     if (x == null || y == null)
         return Results.Text("NaN", "text/plain");
-    if (!long.TryParse(x, out long number1) || !long.TryParse(y, out long number2))
+    if (!BigInteger.TryParse(x, out BigInteger number1) || !BigInteger.TryParse(y, out BigInteger number2))
         return Results.Text("NaN", "text/plain");
     if (number1 < 1 || number2 < 1)
         return Results.Text("NaN", "text/plain");
-    long big = number1 > number2 ? number1 : number2;
-    long small = big == number1 ? number2 : number1;
-    return Results.Text(LCM(big, small).ToString(), "text/plain");
+    return Results.Text(LCM(number1, number2).ToString(), "text/plain");
 });
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
 app.Run();
-long LCM(long big, long small)
+BigInteger LCM(BigInteger a, BigInteger b)
 {
-    return (big / GDC(big, small)) * small;
-}
-long GDC(long big, long small)
-{
-    if (big == 0) return small;
-    return GDC(small % big, big);
+    return (a / BigInteger.GreatestCommonDivisor(a, b)) * b;
 }
