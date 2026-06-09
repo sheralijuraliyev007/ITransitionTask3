@@ -13,13 +13,8 @@ app.UseExceptionHandler(exceptionHandlerApp
                      .ExecuteAsync(context)));
 
 
-app.MapGet("/sheralijuraliyev3_gmail_com", (string? x, string? y) =>
+app.MapGet("/sheralijuraliyev3_gmail_com", (string x, string y) =>
 {
-    if(x == null || y == null)
-    {
-        return "NaN";
-    }
-
     if (!long.TryParse(x, out long number1) || !long.TryParse(y, out long number2))
         return "NaN";
 
@@ -53,7 +48,7 @@ app.Run();
 
 long LCM(long big, long small)
 {
-    return (big * small) / GDC(big, small);
+    return (big / GDC(big, small)) * small;
 }
 
 long GDC(long big, long small)
