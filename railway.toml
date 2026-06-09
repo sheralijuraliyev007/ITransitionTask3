@@ -1,5 +1,5 @@
 [build]
-builder = "NIXPACKS"
+builder = "DOCKERFILE"
 
 [deploy]
-startCommand = "dotnet out/ITransitionTask3.dll --urls=http://0.0.0.0:$PORT"
+startCommand = "dotnet ITransitionTask3.dll --urls=http://0.0.0.0:$PORT"
