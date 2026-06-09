@@ -42,8 +42,6 @@ app.MapGet("/sheralijuraliyev3_gmail_com", (string? x, string? y) =>
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
-
 
 app.MapControllers();
 
